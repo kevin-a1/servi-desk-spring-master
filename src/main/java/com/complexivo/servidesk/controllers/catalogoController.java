@@ -23,24 +23,25 @@ import com.complexivo.servidesk.service.catalogoService;
  * @author AlexanderGuzman
  */
 @RestController
-@RequestMapping("catalogo")
+@RequestMapping("/catalogo")
+@CrossOrigin(origins = "*")
 public class catalogoController {
     @Autowired
     catalogoService service;
-
-    @GetMapping("/listar") 
+    
+    @GetMapping("/listar")
     @CrossOrigin
     public List<catalogo> listar() {
         return this.service.listar();
 
     }
-
+    
     @PostMapping("/guardar")
     @CrossOrigin
     public catalogo guardar(@RequestBody catalogo e) {
         return this.service.guardar(e);
     }
-
+    
     @DeleteMapping("/{codCatalogo}")
     @CrossOrigin
     public void eliminar(@PathVariable Long codCatalogo) {
@@ -49,7 +50,7 @@ public class catalogoController {
     @PutMapping("/estado/{codCatalogo}")
     @CrossOrigin
     public catalogo editarEstado(@PathVariable Long codCatalogo, @RequestBody catalogo catalogo1) {
-
+      
        return service.editarEstado(codCatalogo, catalogo1);
     }
     @PutMapping("/categoria/{codCatalogo}")

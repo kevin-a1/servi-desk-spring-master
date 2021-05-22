@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="criticidad")
 public class criticidad {
 
     @Id
@@ -19,21 +22,8 @@ public class criticidad {
 
     private double valor;
 
-    public criticidad(Long codCriticidad, String nivelCriticidad, String descripcion, double valor) {
-        this.codCriticidad = codCriticidad;
-        this.nivelCriticidad = nivelCriticidad;
-        this.descripcion = descripcion;
-        this.valor = valor;
-    }
-
-    public criticidad(String nivelCriticidad, String descripcion, double valor) {
-        this.nivelCriticidad = nivelCriticidad;
-        this.descripcion = descripcion;
-        this.valor = valor;
-    }
-
-    public criticidad() {
-    }
+    @OneToOne(mappedBy = "criticidad")
+    private servicio servicio;
 
     public Long getCodCriticidad() {
         return codCriticidad;

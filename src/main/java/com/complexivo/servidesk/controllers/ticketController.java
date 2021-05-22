@@ -79,4 +79,16 @@ public class ticketController {
     public void asignarTecnicoTicket(@PathVariable Long cod_tecnico,@PathVariable Long codticket) {
         this.service.asignarTecnicoTicket(cod_tecnico, codticket);
     }
+    @PutMapping("/cambiar_severidad/{cod_severidad}/{codticket}")
+    @CrossOrigin
+    public void modificarTicketSeveridad(@PathVariable Long cod_severidad,@PathVariable Long codticket) {
+        this.service.modificarTicketSeveridad(cod_severidad, codticket);
+    }
+    
+    @PutMapping("/cambiar_estado/{cod_estado}/{codticket}")
+    @CrossOrigin
+    public void cambiarestado(@PathVariable Long cod_estado, @PathVariable Long codticket){
+        this.service.cambiarEstado(cod_estado,codticket);
+    }
+    
 }

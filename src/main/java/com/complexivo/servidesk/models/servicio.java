@@ -1,11 +1,14 @@
 package com.complexivo.servidesk.models;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,50 +25,25 @@ public class servicio {
     private Date fechaServicio;
     
     @OneToOne
-    @JoinColumn(name = "codCatalogo", updatable = false, nullable = false, referencedColumnName = "codCatalogo")
+    @JoinColumn(name = "codCatalogo")
     private catalogo catalogo;
 
     @OneToOne
-    @JoinColumn(name = "codPrioridad", updatable = false, nullable = false, referencedColumnName = "codPrioridad")
+    @JoinColumn(name = "codPrioridad")
     private prioridad prioridad;
 
     @OneToOne
-    @JoinColumn(name = "codTipo", updatable = false, nullable = false, referencedColumnName = "codTipo")
+    @JoinColumn(name = "codTipo")
     private tipo tipo;
     
     @OneToOne
-    @JoinColumn(name = "codCriticidad", updatable = false, nullable = false, referencedColumnName = "codCriticidad")
+    @JoinColumn(name = "codCriticidad")
     private criticidad criticidad;
+    
+    @OneToMany(mappedBy = "servicio")
+    private List<ticket> ticket;
 
-    public servicio(Long codServicio, String descripcion, String titulo, Date fechaServicio,catalogo catalogo,
-        prioridad prioridad,tipo tipo, criticidad criticidad) {
-        this.codServicio = codServicio;
-        this.descripcion = descripcion;
-        this.titulo = titulo;
-        this.fechaServicio = fechaServicio;
-        this.catalogo = catalogo;
-        this.prioridad = prioridad;
-        this.tipo = tipo;
-        this.criticidad = criticidad;
-    }
- 
-
-    public servicio(String descripcion, String titulo, Date fechaServicio,catalogo catalogo, 
-    prioridad prioridad,tipo tipo, criticidad criticidad) {
-        this.descripcion = descripcion;
-        this.titulo = titulo;
-        this.fechaServicio = fechaServicio;
-        this.catalogo = catalogo;
-        this.prioridad = prioridad;
-        this.tipo = tipo;
-        this.criticidad = criticidad;
-    }
-
-
-    public servicio() {
-    }
-
-
+    
     public Long getCodServicio() {
         return this.codServicio;
     }

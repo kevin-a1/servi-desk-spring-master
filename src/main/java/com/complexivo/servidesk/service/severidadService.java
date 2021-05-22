@@ -49,4 +49,8 @@ public class severidadService {
 		}
 		return "No se ha encontrado una severidad con el codigo ingresado";
 	}
+
+	public severidad findByNivelSeveridad(String nivelSeveridad){
+		return this.severidadrepository.findByNivelSeveridad(nivelSeveridad);
+	}
 }

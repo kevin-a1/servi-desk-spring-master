@@ -1,11 +1,16 @@
 package com.complexivo.servidesk.service;
 import com.complexivo.servidesk.models.ticket;
 import com.complexivo.servidesk.repository.ticketRepository;
+
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @Service
 public class ticketService {
     @Autowired
@@ -35,9 +40,19 @@ public class ticketService {
     }*/
     
     public ticket editarFechaAsignacion( Long codTicket, ticket ticket1) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        System.out.println("yyyy/MM/dd HH:mm:ss-> "+ dtf.format(LocalDateTime.now()));
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(dtf.format(LocalDateTime.now()));
+        } catch (ParseException ex) 
+        {
+            System.out.println(ex);
+        }
         if (repo.findById(codTicket).isPresent()) {
             ticket ticketToUpdate=repo.findById(codTicket).get();
-            ticketToUpdate.setFechaAsignacion(ticket1.getFechaAsignacion());
+            ticketToUpdate.setFechaAsignacion(fechaDate);
             return repo.save(ticketToUpdate);		
         }
        return ticket1;
@@ -48,5 +63,12 @@ public class ticketService {
     }
     public void asignarTecnicoTicket(Long cod_tecnico,Long codticket){
         this.repo.asignarticketTecnico(cod_tecnico, codticket);
-   }
+    }
+    public void modificarTicketSeveridad(Long cod_severidad, Long codticket){
+       this.repo.modificarTicketSeveridad(cod_severidad, codticket);
+    }
+    
+    public void cambiarEstado(Long cod_estado, Long codticket){
+        this.repo.cambiarEstado(cod_estado, codticket);
+    }
 }

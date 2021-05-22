@@ -3,12 +3,9 @@ package com.complexivo.servidesk.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
 import com.complexivo.servidesk.models.prioridad;
-import com.complexivo.servidesk.repository.prioridadRepository;
 import com.complexivo.servidesk.service.prioridadService;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/prioridad")
+@CrossOrigin(origins = "*")
 public class prioridadController {
 
     @Autowired
@@ -33,7 +31,7 @@ public class prioridadController {
 
 
 
-    @PostMapping("/guardar/{codsolucion}")
+    @PostMapping("/guardar")
     public prioridad guardar(@RequestBody prioridad p) {
         return this.prioridadservice.nuevo(p);
 

@@ -6,6 +6,7 @@
 package com.complexivo.servidesk.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,12 +16,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne; 
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  *
  * @author AlexanderGuzman
@@ -45,6 +48,7 @@ public class ticket {
     private Date fechaCreacion;
     private double sla;
     private String url;
+    private String descripcionTicket;
 
     @OneToOne
     @JoinColumn(name = "codUsuario", updatable = false, nullable = false, referencedColumnName = "codUsuario")
@@ -55,20 +59,16 @@ public class ticket {
     // private usuario usuario;
 
    @OneToOne
-    @JoinColumn(name = "codCoordinador", updatable = false, nullable = false, referencedColumnName = "codCoordinador")
+    @JoinColumn(name = "codCoordinador", updatable = false,  referencedColumnName = "codCoordinador")
     private coordinador coordinador;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "codViaComunicacion", updatable = false, nullable = false, referencedColumnName = "codViaComunicacion")
     private viaComunicacion viaComunicacion;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "codServicio", updatable = false, nullable = false, referencedColumnName = "codServicio")
     private servicio servicio;
-
-    @OneToOne
-    @JoinColumn(name = "codSolucion", updatable = false,  referencedColumnName = "codSolucion")
-    private solucion solucion;
 
     @OneToOne
     @JoinColumn(name = "codTecnico", updatable = false,  referencedColumnName = "codTecnico")
@@ -77,11 +77,26 @@ public class ticket {
     @OneToOne
     @JoinColumn(name = "codEstado", updatable = false , referencedColumnName = "codEstado")
     private estado estado;
-
-    public ticket() {
+    @OneToOne
+    @JoinColumn(name = "codSeveridad", updatable = false , referencedColumnName = "codSeveridad")
+    private severidad severidad;
+    
+    
+  
+    public severidad getSeveridad() {
+        return severidad;
     }
 
+    public void setSeveridad(severidad severidad) {
+        this.severidad = severidad;
+    }
+    public String getDescripcionTicket() {
+        return descripcionTicket;
+    }
 
+    public void setDescripcionTicket(String descripcionTicket) {
+        this.descripcionTicket = descripcionTicket;
+    }
     public String getUrl() {
         return url;
     }
@@ -145,15 +160,6 @@ public class ticket {
     public void setServicio(servicio servicio) {
         this.servicio = servicio;
     }
-
-    public solucion getSolucion() {
-        return this.solucion;
-    }
-
-    public void setSolucion(solucion solucion) {
-        this.solucion = solucion;
-    }
-
 
     public Long getCodticket() {
         return codticket;

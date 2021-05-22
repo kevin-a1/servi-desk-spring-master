@@ -17,7 +17,7 @@ import com.complexivo.servidesk.service.tipoService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("tipo")
+@RequestMapping("/tipo")
 public class tipoController {
 
     @Autowired

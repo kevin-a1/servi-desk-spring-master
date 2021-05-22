@@ -1,8 +1,10 @@
 package com.complexivo.servidesk.models;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +16,9 @@ public class solucion {
     private Date fechafinalizacion;
      private String descripcion;
      
-
+    @OneToOne
+    @JoinColumn(name = "codticket", updatable = false,  referencedColumnName = "codticket")
+    private ticket ticket;
      public  solucion(){
 
      }
@@ -51,6 +55,14 @@ public class solucion {
 
     public void setDescripcion(String descripcion) {
       this.descripcion = descripcion;
+    }
+
+    public ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(ticket ticket) {
+        this.ticket = ticket;
     }
 
     

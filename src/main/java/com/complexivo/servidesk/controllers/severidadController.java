@@ -49,5 +49,8 @@ public class severidadController {
     public String eliminarSeveridad(@PathVariable Long codSeveridad) {
         return severidadservice.eliminarSeveridad(codSeveridad);
     }
-
+    @GetMapping("/recuperar-severidad-nivel/{nivelSeveridad}")
+    public severidad recuperarSeveridadPorNivelSeveridad(@PathVariable String nivelSeveridad) {
+        return this.severidadservice.findByNivelSeveridad(nivelSeveridad);
+    }
 }

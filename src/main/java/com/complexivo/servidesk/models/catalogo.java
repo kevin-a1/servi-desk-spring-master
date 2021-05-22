@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,22 +28,8 @@ public class catalogo {
     @Column(length =300)
     private String descripcion;
     private boolean estado;
-    
-    public catalogo(Long codCatalogo, String categoria, String descripcion, boolean estado) {
-        this.codCatalogo = codCatalogo;
-        this.categoria = categoria;
-        this.descripcion = descripcion;
-        this.estado = estado;
-    }
-    
-    public catalogo(String categoria, String descripcion, boolean estado) {
-        this.categoria = categoria;
-        this.descripcion = descripcion;
-        this.estado = estado;
-    }
-
-    public catalogo() {
-    }
+    @OneToOne(mappedBy = "catalogo")
+    private servicio servicio;
     
     //generar los getters y setters de la tabla que va unida
     

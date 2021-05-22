@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,19 +20,8 @@ public class tipo {
     @Column(length = 300)
     private String descripcion;
 
-    public tipo(Long codTipo, String nombre, String descripcion) {
-        this.codTipo = codTipo;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
-
-    public tipo(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-    }
-
-    public tipo() {
-    }
+    @OneToOne(mappedBy = "tipo")
+    private servicio servicio;
 
     public String getNombre() {
         return this.nombre;

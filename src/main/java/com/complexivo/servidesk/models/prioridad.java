@@ -1,30 +1,26 @@
 package com.complexivo.servidesk.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "prioridad")
 public class prioridad  {
-
+ 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
      private  Long codPrioridad;
      private  String nivelPrioridad;
      private  int tiempoRespuesta;
-
+     
+     @OneToOne(mappedBy = "prioridad")
+     private servicio servicio;
 
      
-    public prioridad() {
-        
-    }
-
-    public prioridad(Long codPrioridad, String nivelPrioridad, int tiempoRespuesta) {
-        this.codPrioridad = codPrioridad;
-        this.nivelPrioridad = nivelPrioridad;
-        this.tiempoRespuesta = tiempoRespuesta;
-    }
-
     public Long getCodPrioridad() {
         return codPrioridad;
     }
