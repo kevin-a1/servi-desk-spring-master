@@ -55,6 +55,12 @@ public class ticketController {
         return this.service.tickeTecnico(codTecnico);
     }
 
+    @GetMapping("/usuario/{codUsuario}")
+    @CrossOrigin
+    public List<ticket> ticketUsuario(@PathVariable Long codUsuario){
+        return this.service.ticketUsuario(codUsuario);
+    }
+
     @DeleteMapping("/{codTicket}")
     @CrossOrigin
     public void eliminar(@PathVariable Long codTicket) {

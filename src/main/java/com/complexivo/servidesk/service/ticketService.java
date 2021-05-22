@@ -29,6 +29,10 @@ public class ticketService {
     public List<ticket> tickeTecnico(Long codTecnico){
         return this.repo.ticketecnico(codTecnico);
     }
+
+    public List<ticket> ticketUsuario(Long codUsuario){
+        return this.repo.ticketUsuario(codUsuario);
+    }
     
   /*  public ticket editarEstado( Long codTicket, ticket ticket1) {
         if (repo.findById(codTicket).isPresent()) {

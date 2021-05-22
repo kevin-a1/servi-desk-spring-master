@@ -24,6 +24,8 @@ import org.springframework.data.jpa.repository.Modifying;
 public interface ticketRepository extends JpaRepository<ticket, Long>{
     @Query(value = "SELECT * FROM ticket WHERE cod_tecnico=:codTecnico", nativeQuery = true)
     List<ticket> ticketecnico(Long codTecnico);
+    @Query(value = "SELECT * FROM ticket WHERE cod_usuario=:codUsuario", nativeQuery = true)
+    List<ticket> ticketUsuario(Long codUsuario);
     public List<ticket> findByCodticket(Long id);
 
     @Modifying
