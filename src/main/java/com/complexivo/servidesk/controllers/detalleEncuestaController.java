@@ -26,24 +26,29 @@ import org.springframework.web.bind.annotation.RestController;
 public class detalleEncuestaController {
     @Autowired
     private detalleEncuestaService detallEncuestaService;
-    
+
     @GetMapping("/listar")
     public List<detalleEncuesta> listar(){
         return this.detallEncuestaService.listar();
     }
-    
+
     @GetMapping("/buscar/{idDetalleEn}")
     public Optional<detalleEncuesta> buscar(@PathVariable Long idDetalleEn){
         return this.detallEncuestaService.buscar(idDetalleEn);
     }
-    
+
     @PostMapping("/guardar")
     public detalleEncuesta nuevo(@RequestBody detalleEncuesta detallEncuesta){
         return this.detallEncuestaService.nuevo(detallEncuesta);
     }
-    
+
     @DeleteMapping("/delete/{idDetalleEn}")
     public void delete(@PathVariable Long idDetalleEn){
         this.detallEncuestaService.Eliminar(idDetalleEn);
+    }
+
+    @GetMapping("/preguntas/{cod_encuesta}")
+    public List<detalleEncuesta> llamar(@PathVariable Long cod_encuesta){
+      return this.detallEncuestaService.llamarP(cod_encuesta);
     }
 }

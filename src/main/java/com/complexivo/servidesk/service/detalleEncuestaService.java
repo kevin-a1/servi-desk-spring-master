@@ -20,19 +20,23 @@ import org.springframework.stereotype.Service;
 public class detalleEncuestaService {
     @Autowired
     private detalleEncuestaRepository detallEncuestaRepository;
-    
+
     public List<detalleEncuesta> listar(){
         return this.detallEncuestaRepository.findAll();
     }
-    
+
     public detalleEncuesta nuevo(detalleEncuesta detalle){
         return this.detallEncuestaRepository.save(detalle);
     }
-    
+
     public Optional<detalleEncuesta> buscar(Long id){
         return this.detallEncuestaRepository.findByCodDetalle(id);
     }
-    
+
+    public List<detalleEncuesta> llamarP(Long cod_encuesta){
+      return this.detallEncuestaRepository.llamarPreguntas(cod_encuesta);
+    }
+
     public void Eliminar(Long id){
         this.detallEncuestaRepository.deleteById(id);
     }
