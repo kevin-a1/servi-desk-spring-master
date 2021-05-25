@@ -68,7 +68,7 @@ public class ticketController {
     }
     /*
      * @PutMapping("/estado/{codTicket}")
-     * 
+     *
      * @CrossOrigin public ticket editarEstado(@PathVariable Long
      * codTicket, @RequestBody ticket ticket1) { return
      * service.editarEstado(codTicket,ticket1); }
@@ -79,7 +79,7 @@ public class ticketController {
     public ticket editarFechaAsignacion(@PathVariable Long codTicket, @RequestBody ticket ticket1) {
         return service.editarFechaAsignacion(codTicket, ticket1);
     }
-     
+
     @PutMapping("/asignarTecnico/{cod_tecnico}/{codticket}")
     @CrossOrigin
     public void asignarTecnicoTicket(@PathVariable Long cod_tecnico,@PathVariable Long codticket) {
@@ -90,11 +90,17 @@ public class ticketController {
     public void modificarTicketSeveridad(@PathVariable Long cod_severidad,@PathVariable Long codticket) {
         this.service.modificarTicketSeveridad(cod_severidad, codticket);
     }
-    
+
     @PutMapping("/cambiar_estado/{cod_estado}/{codticket}")
     @CrossOrigin
     public void cambiarestado(@PathVariable Long cod_estado, @PathVariable Long codticket){
         this.service.cambiarEstado(cod_estado,codticket);
     }
-    
+
+    @PutMapping("/reasigar/{codticket}")
+    @CrossOrigin
+    public void reasignar(@PathVariable Long codticket){
+      this.service.cambiarEstado(codticket);
+    }
+
 }
