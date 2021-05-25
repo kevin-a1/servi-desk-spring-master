@@ -46,6 +46,6 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true, value = "UPDATE ticket set cod_tecnico = null where codticket =?2")
+    @Query(nativeQuery = true, value = "UPDATE ticket SET cod_tecnico = null WHERE codticket =?1")
     void reasignarticket(Long codticket);
 }

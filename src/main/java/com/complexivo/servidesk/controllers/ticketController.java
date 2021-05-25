@@ -97,7 +97,7 @@ public class ticketController {
         this.service.cambiarEstado(cod_estado,codticket);
     }
 
-    @PutMapping("/reasigar/{codticket}")
+    @PutMapping("/reasignar/{codticket}")
     @CrossOrigin
     public void reasignar(@PathVariable Long codticket){
       this.service.reasigar(codticket);
