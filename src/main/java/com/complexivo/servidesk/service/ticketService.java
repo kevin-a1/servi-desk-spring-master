@@ -65,11 +65,21 @@ public class ticketService {
        return this.repo.findByCodticket(codTicket);
 
     }
-    public void asignarTecnicoTicket(Long cod_tecnico,Long codticket){
-        this.repo.asignarticketTecnico(cod_tecnico, codticket);
+    public void asignarTecnicoTicket(Long cod_tecnico,Long cod_coordinador,Long codticket){
+        this.repo.asignarticketTecnico(cod_tecnico,cod_coordinador, codticket);
     }
     public void modificarTicketSeveridad(Long cod_severidad, Long codticket){
        this.repo.modificarTicketSeveridad(cod_severidad, codticket);
+    }
+
+    public List<ticket> buscarPorTipoServicio(String nombre){
+        return this.repo.buscarPorTipoServicio(nombre);
+    }
+    public List<ticket> buscarPorTicketsEliminados(boolean ticketEstado){
+        return this.repo.findByTicketEstado(ticketEstado);
+    }
+    public void modificarTicketEstado( boolean ticketEstado,Long codticket){
+       this.repo.modificarTicketEstado(ticketEstado, codticket);
     }
 
     public void cambiarEstado(Long cod_estado, Long codticket){

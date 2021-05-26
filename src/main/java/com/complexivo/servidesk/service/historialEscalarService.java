@@ -1,0 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.complexivo.servidesk.service;
+
+import com.complexivo.servidesk.models.HistorialEscalar;
+import com.complexivo.servidesk.repository.historialEscalarRepository;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author HP
+ */
+@Service
+public class historialEscalarService {
+    @Autowired
+    private historialEscalarRepository repo;
+    
+    public void crear(Date fechaEscalar,Long nivel1, Long nivel2, Long codticket ){
+        this.repo.insertar(fechaEscalar, nivel1, nivel2, codticket);
+    }
+    
+    public Optional<HistorialEscalar> BuscarByTicket(Long codticket){
+        return this.repo.buscarByTicket(codticket);
+    }
+    public List<HistorialEscalar> listar(){
+        return this.repo.findAll();
+    }
+}

@@ -26,7 +26,11 @@ public class preguntasService {
     }
     
     public preguntas Nuevo(preguntas preguntas){
-        return this.pregunRepository.save(preguntas);
+        if(pregunRepository.findByPregunta(preguntas.getPregunta())==null){
+            return this.pregunRepository.save(preguntas);
+        }
+        return new preguntas();
+       
     }
     
     public Optional<preguntas> Buscar(Long id){
@@ -35,5 +39,15 @@ public class preguntasService {
     
     public void Eliminar(Long id){
         this.pregunRepository.deleteById(id);
+    }
+
+    public preguntas actualizar(Long codPregunta,preguntas pregunta){
+        if(pregunRepository.findByCodPregunta(codPregunta)!=null){
+            if(pregunRepository.findByPregunta(pregunta.getPregunta())==null){
+                pregunta.setCodPregunta(codPregunta);
+                return pregunRepository.save(pregunta);
+            }  
+        }
+        return null;
     }
 }

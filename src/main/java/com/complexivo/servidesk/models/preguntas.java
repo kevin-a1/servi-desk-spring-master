@@ -7,9 +7,9 @@ import javax.persistence.*;
 @Table(name = "preguntas")
 public class preguntas {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long codPregunta;
-    @Column(name = "pregunta")
+    @Column(name = "pregunta",nullable = false,length = 150,unique = true)
     private String pregunta;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPreguntas")

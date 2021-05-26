@@ -80,15 +80,30 @@ public class ticketController {
         return service.editarFechaAsignacion(codTicket, ticket1);
     }
 
-    @PutMapping("/asignarTecnico/{cod_tecnico}/{codticket}")
+    @PutMapping("/asignarTecnico/{cod_tecnico}/{cod_coordinador}/{codticket}")
     @CrossOrigin
-    public void asignarTecnicoTicket(@PathVariable Long cod_tecnico,@PathVariable Long codticket) {
-        this.service.asignarTecnicoTicket(cod_tecnico, codticket);
+    public void asignarTecnicoTicket(@PathVariable Long cod_tecnico,@PathVariable Long cod_coordinador,@PathVariable Long codticket) {
+        this.service.asignarTecnicoTicket(cod_tecnico, cod_coordinador,codticket);
     }
     @PutMapping("/cambiar_severidad/{cod_severidad}/{codticket}")
     @CrossOrigin
     public void modificarTicketSeveridad(@PathVariable Long cod_severidad,@PathVariable Long codticket) {
         this.service.modificarTicketSeveridad(cod_severidad, codticket);
+    }
+     @GetMapping("/tipo_servicio/{nombre}")
+    @CrossOrigin
+    public List<ticket> buscarPorTipoServicio(@PathVariable String nombre) {
+        return this.service.buscarPorTipoServicio(nombre);
+    }
+     @GetMapping("/listar_eliminados/{ticketEstado}")
+    @CrossOrigin
+    public List<ticket> buscarPorEliminados(@PathVariable boolean ticketEstado) {
+        return this.service.buscarPorTicketsEliminados(ticketEstado);
+    }
+    @PutMapping("/eliminar_recuperar/{ticketEstado}/{codticket}")
+    @CrossOrigin
+    public void modificar_ticket_estado(@PathVariable boolean ticketEstado,@PathVariable Long codticket) {
+        this.service.modificarTicketEstado(ticketEstado, codticket);
     }
 
     @PutMapping("/cambiar_estado/{cod_estado}/{codticket}")

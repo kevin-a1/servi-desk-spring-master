@@ -46,6 +46,9 @@ public class ticket {
     @Column(name = "fechaCreacion")
     @DateTimeFormat(pattern = "YYYY-MM-DDThh:mm:ssTZD")
     private Date fechaCreacion;
+    
+    @Column(name = "ticketEstado",nullable = true)
+    private boolean ticketEstado=true;
     private double sla;
     private String url;
     private String descripcionTicket;
@@ -80,9 +83,14 @@ public class ticket {
     @OneToOne
     @JoinColumn(name = "codSeveridad", updatable = false , referencedColumnName = "codSeveridad")
     private severidad severidad;
-    
-    
-  
+
+    public boolean isTicketEstado() {
+        return ticketEstado;
+    }
+
+    public void setTicketEstado(boolean ticketEstado) {
+        this.ticketEstado = ticketEstado;
+    }
     public severidad getSeveridad() {
         return severidad;
     }

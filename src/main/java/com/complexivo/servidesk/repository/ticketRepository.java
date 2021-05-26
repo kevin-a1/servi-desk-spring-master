@@ -11,7 +11,6 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.complexivo.servidesk.models.ticket;
-import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -30,8 +29,8 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
 
     @Modifying
     @Transactional
-    @Query(nativeQuery = true,value = "UPDATE ticket set cod_tecnico =?1  where codticket =?2 ")
-    void asignarticketTecnico(Long cod_tecnico,Long codticket);
+    @Query(nativeQuery = true,value = "UPDATE ticket set cod_tecnico =?1 , cod_coordinador=?2 where codticket =?3 ")
+    void asignarticketTecnico(Long cod_tecnico,Long cod_coordinador,Long codticket);
 
     @Modifying
     @Transactional
@@ -43,6 +42,16 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
     @Transactional
     @Query(nativeQuery = true,value = "UPDATE ticket SET cod_severidad =?1 WHERE codticket =?2 ")
     void modificarTicketSeveridad(Long cod_severidad,Long codticket);
+
+    @Query(value = "select t.*  from (ticket t join servicio using (cod_servicio)) join tipo using (cod_tipo) where nombre=?1 ", nativeQuery = true)
+    List<ticket>buscarPorTipoServicio(String nombre);
+
+    List<ticket> findByTicketEstado(boolean ticketEstado);
+
+     @Modifying
+    @Transactional
+    @Query(nativeQuery = true,value = "UPDATE ticket set  ticket_estado=?1  where codticket =?2 ")
+    void modificarTicketEstado(boolean ticketEstado,Long codticket);
 
     @Modifying
     @Transactional

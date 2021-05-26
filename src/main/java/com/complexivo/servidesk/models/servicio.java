@@ -17,8 +17,8 @@ import javax.persistence.Table;
 public class servicio {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-     private Long codServicio;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codServicio;
     
     private String descripcion;
     private String titulo;
