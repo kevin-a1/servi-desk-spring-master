@@ -46,7 +46,7 @@ public class detalleEncuestaController {
     public void delete(@PathVariable Long idDetalleEn){
         this.detallEncuestaService.Eliminar(idDetalleEn);
     }
-
+    
     @GetMapping("/preguntas/{cod_encuesta}")
     public List<detalleEncuesta> llamar(@PathVariable Long cod_encuesta){
       return this.detallEncuestaService.llamarP(cod_encuesta);

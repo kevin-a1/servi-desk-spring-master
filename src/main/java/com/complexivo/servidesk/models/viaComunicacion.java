@@ -15,7 +15,7 @@ public class viaComunicacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codViaComunicacion;
 
-    @Column(nullable = false,length = 40)
+    @Column(nullable = true,length = 40)
     private String nombre;
     
 

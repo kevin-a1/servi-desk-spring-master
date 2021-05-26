@@ -42,7 +42,7 @@ public class catalogoController {
         return this.service.guardar(e);
     }
     
-    @DeleteMapping("/{codCatalogo}")
+    @DeleteMapping("/eliminar/{codCatalogo}")
     @CrossOrigin
     public void eliminar(@PathVariable Long codCatalogo) {
         this.service.eliminar(codCatalogo);
@@ -63,5 +63,15 @@ public class catalogoController {
     @GetMapping("/buscarporcategoria/{categoria}")
     public catalogo buscarPorNombre(@PathVariable String categoria){
         return service.buscarPorCategoria(categoria);
+    }
+
+    @PutMapping("/actualizarcatalogo/{codCatalogo}")
+    public catalogo actualizarCatalogo(@PathVariable Long codCatalogo,@RequestBody catalogo catalogo){
+        return service.actualizarCatalogo(codCatalogo, catalogo);
+    }
+
+    @GetMapping("/buscarporcodigo/{codCatalogo}")
+    public catalogo buscarPorCodigo(@PathVariable Long codCatalogo){
+        return service.buscarPorCodigo(codCatalogo);
     }
 }

@@ -13,5 +13,6 @@ public interface coordinadorRepository extends JpaRepository<coordinador, Long> 
 
     public coordinador findByEmail(String email);
 
+        coordinador findByEmailAndPassword(String email,String password);
     
 }

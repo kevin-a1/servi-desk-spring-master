@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,5 @@ public interface detalleEncuestaRepository extends JpaRepository<detalleEncuesta
     @Transactional
     @Query(nativeQuery = true, value ="Select * from detalle_encuesta where cod_encuesta =?1")
     List<detalleEncuesta> llamarPreguntas(Long cod_encuesta);
-
 
 }

@@ -64,8 +64,8 @@ public class tecnicoController {
         return serv.buscarPorEmail(email);
     }
 
-    @GetMapping("/login")
-    public tecnico login(String email,String contrasena){
+    @GetMapping("/login/{email}/{contrasena}")
+    public tecnico login(@PathVariable String email,@PathVariable String contrasena){
         return serv.loginTecnico(email, contrasena);
     }
     @GetMapping("/buscar_por_cedula/{cedula}")

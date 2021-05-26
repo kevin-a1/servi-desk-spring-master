@@ -20,8 +20,7 @@ public class tipo {
     @Column(length = 300)
     private String descripcion;
 
-    @OneToOne(mappedBy = "tipo")
-    private servicio servicio;
+  
 
     public String getNombre() {
         return this.nombre;

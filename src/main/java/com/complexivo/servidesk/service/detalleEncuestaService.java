@@ -33,11 +33,11 @@ public class detalleEncuestaService {
         return this.detallEncuestaRepository.findByCodDetalle(id);
     }
 
-    public List<detalleEncuesta> llamarP(Long cod_encuesta){
-      return this.detallEncuestaRepository.llamarPreguntas(cod_encuesta);
-    }
-
     public void Eliminar(Long id){
         this.detallEncuestaRepository.deleteById(id);
+    }
+
+    public List<detalleEncuesta> llamarP(Long cod_encuesta){
+      return this.detallEncuestaRepository.llamarPreguntas(cod_encuesta);
     }
 }

@@ -47,4 +47,7 @@ public class usuarioService{
         }
        return usuario;
     }
+    public usuario loginUsuario(String email,String contrasena){
+        return this.rep.findByEmailAndContrasena(email, contrasena);
+    }
 }

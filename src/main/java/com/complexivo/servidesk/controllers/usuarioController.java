@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("usuario")
+@RequestMapping("/usuario")
 public class usuarioController {
 
     @Autowired
@@ -48,7 +48,10 @@ public class usuarioController {
     public void eliminarUsuario(@PathVariable Long codUsuario) {
         this.service.eliminarUsuario(codUsuario);
     }
-
+    @GetMapping("/login/{email}/{contrasena}")
+    public usuario login(@PathVariable String email,@PathVariable String contrasena){
+        return this.service.loginUsuario(email, contrasena);
+    }
     @PutMapping("/editar/{codUsuario}")
     public usuario editarUsuario(@PathVariable Long codUsuario, @RequestBody usuario usuario) {
        return this.service.editarUsuario(codUsuario, usuario);

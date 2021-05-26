@@ -46,5 +46,7 @@ public class coordinadorService {
         }
        return null;
     }
-    
+     public coordinador loginCoordinador(String email,String contrasena){
+        return this.coordinadorRepository.findByEmailAndPassword(email, contrasena);
+    }
 }

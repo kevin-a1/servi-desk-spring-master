@@ -16,9 +16,6 @@ public class prioridad  {
      private  Long codPrioridad;
      private  String nivelPrioridad;
      private  int tiempoRespuesta;
-     
-     @OneToOne(mappedBy = "prioridad")
-     private servicio servicio;
 
      
     public Long getCodPrioridad() {

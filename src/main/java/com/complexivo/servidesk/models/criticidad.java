@@ -22,8 +22,6 @@ public class criticidad {
 
     private double valor;
 
-    @OneToOne(mappedBy = "criticidad")
-    private servicio servicio;
 
     public Long getCodCriticidad() {
         return codCriticidad;

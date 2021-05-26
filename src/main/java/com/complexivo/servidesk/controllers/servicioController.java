@@ -53,4 +53,13 @@ public class servicioController {
        this.servicioservice.editarIdPrioridad(cod_prioridad,cod_servicio);
     }
 
+    @GetMapping("listaservicios/{codCatalogo}/{page}/{size}")
+    public List<servicio> listaServiciosPorCatalogo(@PathVariable int codCatalogo,@PathVariable int page,@PathVariable int size){
+        return servicioservice.listarServiciosPorCatalogo(codCatalogo, page, size);
+    }
+
+    @GetMapping("listaserviciosporcategoria/{codCatalogo}")
+    public List<servicio> listaServiciosPorCategoria(@PathVariable int codCatalogo){
+        return servicioservice.listarServicioPorCategoria(codCatalogo);
+    }
 }
