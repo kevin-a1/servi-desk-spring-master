@@ -26,9 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @author HP
  */
 
-@CrossOrigin(origins= "*")
+
 @RestController
 @RequestMapping("historial")
+@CrossOrigin(origins= "*")
 public class historialEscalarController {
     @Autowired
     historialEscalarService service;
