@@ -22,8 +22,8 @@ public class historialEscalarService {
     @Autowired
     private historialEscalarRepository repo;
     
-    public void crear(Date fechaEscalar,Long nivel1, Long nivel2, Long codticket ){
-        this.repo.insertar(fechaEscalar, nivel1, nivel2, codticket);
+    public void crear(HistorialEscalar data ){
+        this.repo.save(data);
     }
     
     public Optional<HistorialEscalar> BuscarByTicket(Long codticket){

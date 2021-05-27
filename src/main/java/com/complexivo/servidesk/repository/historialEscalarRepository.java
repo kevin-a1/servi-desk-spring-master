@@ -22,11 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface historialEscalarRepository extends JpaRepository<HistorialEscalar, Long>{
-    
-    @Query(value = "INSERT INTO historialescalar (fecha_escalar,nivel1, nivel2, codticket) VALUES(?1,?2,?3,?4)", nativeQuery =true )
-    public void insertar(Date fechaEscalar,Long nivel1, Long nivel2, Long codticket);
-
-    
     @Query(value = "SELECT * from historialescalar WHERE codticket =?1", nativeQuery = true)
     public Optional<HistorialEscalar> buscarByTicket(Long codticket);
 }

@@ -14,7 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,10 +37,10 @@ public class historialEscalarController {
         return this.service.listar();
     }
     
-    @PutMapping("/guardar/{fechaEscalar}/{nivel1}/{nivel2}/{codticket}")
+    @PostMapping("/guardar")
     @CrossOrigin
-    public void guardar(@PathVariable Date fechaEscalar, @PathVariable Long nivel1, @PathVariable Long nivel2, @PathVariable Long codticket){
-        this.service.crear(fechaEscalar, nivel1, nivel2, codticket);
+    public void guardar(@RequestBody HistorialEscalar data){
+        this.service.crear(data); 
     }
     
     @GetMapping("/buscarByTicket/{codticket}")
