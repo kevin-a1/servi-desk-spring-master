@@ -50,5 +50,9 @@ public class solucionController {
     public void eliminar(@PathVariable Long codSolucion) {
        this.solucionserv.Eliminar(codSolucion);
     }
-   
+    
+    @GetMapping("/buscar_codticket/{codticket}")
+     public List<solucion> buscarPorCodticket(@PathVariable Long codticket){
+        return this.solucionserv.solucionPorCodTicket(codticket);
+    }
 }

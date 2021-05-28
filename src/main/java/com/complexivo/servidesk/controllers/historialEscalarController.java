@@ -26,25 +26,26 @@ import org.springframework.web.bind.annotation.RestController;
  * @author HP
  */
 
-
 @RestController
-@RequestMapping("historial")
-@CrossOrigin(origins= "*")
+@RequestMapping("historialEscalar")
 public class historialEscalarController {
     @Autowired
     historialEscalarService service;
 
     @GetMapping("/listar")
+    @CrossOrigin
     public List<HistorialEscalar> listar(){
         return this.service.listar();
     }
 
     @PostMapping("/guardar")
-    public void guardar(@RequestBody HistorialEscalar data){
-        this.service.crear(data);
+    @CrossOrigin
+    public HistorialEscalar guardar(@RequestBody HistorialEscalar data){
+        return this.service.crear(data);
     }
 
     @GetMapping("/buscarByTicket/{codticket}")
+    @CrossOrigin
     public Optional<HistorialEscalar>listarByTicket(@PathVariable Long codticket){
         return this.service.BuscarByTicket(codticket);
     }

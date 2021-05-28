@@ -28,6 +28,9 @@ public class solucionService {
         public void Eliminar(Long codsolucion){
             this.solucionrepo.deleteById(codsolucion);
         }
+        public List <solucion> solucionPorCodTicket(Long codticket){
+            return this.solucionrepo.solucionPorCodTicket(codticket);
+        }
     }
     
 

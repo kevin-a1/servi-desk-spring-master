@@ -38,39 +38,45 @@ public class tecnicoController {
 
     @DeleteMapping("/{codTecnico}")
     public void eliminar(@PathVariable Long codTecnico) {
-       this.serv.Eliminar(codTecnico);
+        this.serv.Eliminar(codTecnico);
     }
 
     @GetMapping("/listar-tecnicos-nivel/{nivel}")
-    public List<tecnico> listarPorNivel(
-        @PathVariable int nivel,
-        @RequestParam(value="page") int page,
-        @RequestParam(value="size") int size){
-            return serv.listarPorNivel(nivel, page, size);
-        }
+    public List<tecnico> listarPorNivel(@PathVariable int nivel, @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size) {
+        return serv.listarPorNivel(nivel, page, size);
+    }
+
+    @GetMapping("/listar-tecnicos-niveles/{nivel}")
+    public List<tecnico> listarPorNiveles( @PathVariable int nivel){
+                return serv.listarPorNiveles(nivel);
+            }
+            
+
 
     @GetMapping("/tecnico/{codTecnico}")
-    private tecnico obtenerTecnico(@PathVariable Long codTecnico){
+    private tecnico obtenerTecnico(@PathVariable Long codTecnico) {
         return serv.recuperarTecnico(codTecnico);
     }
 
     @PutMapping("/actualizartecnico/{codTecnico}")
-    public tecnico actualizarTecnico(@RequestBody tecnico tecnico,@PathVariable Long codTecnico){
+    public tecnico actualizarTecnico(@RequestBody tecnico tecnico, @PathVariable Long codTecnico) {
         return serv.actualizarTecnico(tecnico, codTecnico);
     }
 
     @GetMapping("/buscarporemail/{email}")
-    public tecnico buscarPorEmail(@PathVariable String email){
+    public tecnico buscarPorEmail(@PathVariable String email) {
         return serv.buscarPorEmail(email);
     }
 
     @GetMapping("/login/{email}/{contrasena}")
-    public tecnico login(@PathVariable String email,@PathVariable String contrasena){
+    public tecnico login(@PathVariable String email, @PathVariable String contrasena) {
         return serv.loginTecnico(email, contrasena);
     }
+
     @GetMapping("/buscar_por_cedula/{cedula}")
-    public int buscarTecnicoPorCedula(@PathVariable String cedula){
-        return this.serv.obtenerTecnicoPorCedula( cedula);
+    public int buscarTecnicoPorCedula(@PathVariable String cedula) {
+        return this.serv.obtenerTecnicoPorCedula(cedula);
     }
 
 }

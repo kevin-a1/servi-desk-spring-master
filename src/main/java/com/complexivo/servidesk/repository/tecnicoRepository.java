@@ -15,10 +15,16 @@ public interface tecnicoRepository extends JpaRepository<tecnico, Long> {
 
     List<tecnico> findAllByNivel(int nivel, Pageable pageable);
 
+    List<tecnico> findAllByNivel(int nivel);
+
     tecnico findByEmail(String email);
 
     tecnico findByEmailAndContrasena(String email,String contrasena);
   
     @Query(value = "select cod_Tecnico from tecnico where cedula=?1", nativeQuery = true)
     int buscarPorCedula(String cedula);
+
+
 }
+
+

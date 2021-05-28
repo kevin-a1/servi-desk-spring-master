@@ -66,11 +66,11 @@ public class ticket {
     private coordinador coordinador;
 
     @ManyToOne
-    @JoinColumn(name = "codViaComunicacion", updatable = false, nullable = false, referencedColumnName = "codViaComunicacion")
+    @JoinColumn(name = "codViaComunicacion", updatable = true, nullable = false, referencedColumnName = "codViaComunicacion")
     private viaComunicacion viaComunicacion;
 
     @ManyToOne
-    @JoinColumn(name = "codServicio", updatable = false, nullable = false, referencedColumnName = "codServicio")
+    @JoinColumn(name = "codServicio", updatable = true, nullable = false, referencedColumnName = "codServicio")
     private servicio servicio;
 
     @OneToOne
@@ -78,10 +78,10 @@ public class ticket {
     private tecnico tecnico;
 
     @OneToOne
-    @JoinColumn(name = "codEstado", updatable = false , referencedColumnName = "codEstado")
+    @JoinColumn(name = "codEstado", updatable = true , referencedColumnName = "codEstado")
     private estado estado;
     @OneToOne
-    @JoinColumn(name = "codSeveridad", updatable = false , referencedColumnName = "codSeveridad")
+    @JoinColumn(name = "codSeveridad", updatable = true , referencedColumnName = "codSeveridad")
     private severidad severidad;
 
     public boolean isTicketEstado() {

@@ -22,8 +22,8 @@ public class historialEscalarService {
     @Autowired
     private historialEscalarRepository repo;
     
-    public void crear(HistorialEscalar data ){
-        this.repo.save(data);
+    public HistorialEscalar crear(HistorialEscalar data ){
+         return this.repo.save(data);
     }
     
     public Optional<HistorialEscalar> BuscarByTicket(Long codticket){

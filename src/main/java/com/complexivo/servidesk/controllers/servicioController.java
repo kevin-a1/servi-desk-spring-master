@@ -33,6 +33,12 @@ public class servicioController {
         return this.servicioservice.buscarPorId(codServicio);
     }
 
+    @GetMapping("/filtrar-servicio/{codTipo}/{codCatalogo}")
+    @CrossOrigin
+    public List<servicio> findServicioByTipo(@PathVariable Long codTipo, @PathVariable Long codCatalogo){
+        return this.servicioservice.findServicioByTipoCatalogo(codTipo, codCatalogo);
+    }
+
     @PostMapping("/guardar-servicio")
     public servicio crearServicio(@RequestBody servicio servicio) {
         return this.servicioservice.crearServicio(servicio);

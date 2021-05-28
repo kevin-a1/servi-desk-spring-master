@@ -21,6 +21,9 @@ public interface servicioRepository extends JpaRepository<servicio , Long>, JpaS
     @Query(nativeQuery = true,value = "UPDATE servicio set cod_prioridad =?1  where cod_servicio =?2 ")
     void updateServicePrioridad(Long cod_prioridad, Long cod_servicio);
 
+    @Query(value = " SELECT * FROM servicio WHERE cod_tipo=:codTipo AND cod_catalogo=:codCatalogo", nativeQuery = true)
+    List<servicio> findServicioByTipoCatalogo(Long codTipo, Long codCatalogo);
+    
     @Query(value="SELECT * FROM servicio s WHERE s.cod_catalogo = :codCatalogo ", nativeQuery = true)
     List<servicio> findservicosbyCatalogo(int codCatalogo,Pageable pageable);
 

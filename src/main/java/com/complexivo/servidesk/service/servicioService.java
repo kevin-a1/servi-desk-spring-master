@@ -60,6 +60,10 @@ public class servicioService {
   
     }
 
+    public List<servicio> findServicioByTipoCatalogo(Long codTipo, Long codCatalogo){
+        return this.serviciorepository.findServicioByTipoCatalogo(codTipo, codCatalogo);
+    }
+
     public List<servicio> listarServiciosPorCatalogo(int codCatalogo,int page,int size){
         return serviciorepository.findservicosbyCatalogo(codCatalogo, PageRequest.of(page, size));
     }

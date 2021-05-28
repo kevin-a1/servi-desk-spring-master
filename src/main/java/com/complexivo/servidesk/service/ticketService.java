@@ -39,6 +39,12 @@ public class ticketService {
             ticket ticketToUpdate=repo.findById(codTicket).get();
             ticketToUpdate.setEstado(ticket1.isEstado());
             return repo.save(ticketToUpdate);
+    
+    /*public ticket editarEstado( Long codTicket, ticket ticket1) {
+        if (repo.findById(codTicket).isPresent()) {
+            ticket ticketToUpdate=repo.findById(codTicket).get();
+            ticketToUpdate.setEstado(ticket1.);
+            return repo.save(ticketToUpdate);			
         }
        return ticket1;
     }*/
