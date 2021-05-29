@@ -6,7 +6,6 @@
 package com.complexivo.servidesk.controllers;
 
 import com.complexivo.servidesk.models.ticket;
-import com.complexivo.servidesk.repository.ticketRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -116,6 +115,12 @@ public class ticketController {
     @CrossOrigin
     public void reasignar(@PathVariable Long codticket){
       this.service.reasigar(codticket);
+    }
+    
+    @PutMapping("/confirmar/{codticket}")
+    @CrossOrigin
+    public void confirmar(@PathVariable Long codticket){
+        this.service.confirmar(codticket);
     }
 
 }

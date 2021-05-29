@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class solucion {
 
      @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codSolucion;
     private Date fechafinalizacion;
      private String descripcion;

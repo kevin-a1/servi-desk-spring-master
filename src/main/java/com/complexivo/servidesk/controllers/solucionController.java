@@ -28,10 +28,9 @@ public class solucionController {
    private solucionService solucionserv;
     
   
-    @RequestMapping("/listar")
+    @GetMapping("/listar")
     public List<solucion> listar() {
         return this.solucionserv.listar();
-        
     }
 
    
@@ -44,8 +43,7 @@ public class solucionController {
     public solucion nuevo(@RequestBody solucion s){
         return this.solucionserv.guardar(s);
     }
-    
-    
+        
     @DeleteMapping("/{codsolucion}")
     public void eliminar(@PathVariable Long codSolucion) {
        this.solucionserv.Eliminar(codSolucion);

@@ -7,6 +7,7 @@ package com.complexivo.servidesk.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,4 +58,13 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
     @Transactional
     @Query(nativeQuery = true, value = "UPDATE ticket SET cod_tecnico = null WHERE codticket =?1")
     void reasignarticket(Long codticket);
+    
+
+    @Query(nativeQuery = true,value = "select * from ticket where fecha_creacion between :fechainicial and :fechafinal and cod_estado =:codestado")
+    List<ticket> findTicketsbyFechaandEstado(Date fechainicial,Date fechafinal,int codestado);
+    
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true, value = "UPDATE ticket SET confirmacion = true WHERE codticket =?1")
+    void confirmar(Long codticket);
 }

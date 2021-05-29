@@ -95,4 +95,8 @@ public class ticketService {
     public void reasigar(Long codticket){
       this.repo.reasignarticket(codticket);
     }
+    
+    public void confirmar(Long codticket){
+        this.repo.confirmar(codticket);
+    }
 }

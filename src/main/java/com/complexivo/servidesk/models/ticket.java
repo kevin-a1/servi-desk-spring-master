@@ -83,7 +83,10 @@ public class ticket {
     @OneToOne
     @JoinColumn(name = "codSeveridad", updatable = true , referencedColumnName = "codSeveridad")
     private severidad severidad;
-
+    
+    @Column(name = "confirmacion", nullable = true)
+    private boolean  confirmacion = false;
+    
     public boolean isTicketEstado() {
         return ticketEstado;
     }
@@ -201,6 +204,16 @@ public class ticket {
     public void setSla(double sla) {
         this.sla = sla;
     }
+
+    public boolean getConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(boolean confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+
+    
 
  
 }
