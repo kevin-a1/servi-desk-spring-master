@@ -1,6 +1,7 @@
 package com.complexivo.servidesk.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.complexivo.servidesk.models.usuario;
 import com.complexivo.servidesk.service.usuarioService;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("usuario")
+@RequestMapping("/usuario")
 public class usuarioController {
 
     @Autowired
@@ -30,8 +31,8 @@ public class usuarioController {
     }
     
     @GetMapping("/buscar/{codUsuario}")
-    public void buscarUsuario(@PathVariable Long codUsuario) {
-        this.service.buscarUsuario(codUsuario);
+    public Optional<usuario> buscarUsuarioLista(@PathVariable Long codUsuario) {
+        return this.service.buscarUsuarioLista(codUsuario);
     }
 
     @GetMapping("/buscarEmail/{email}")
@@ -48,7 +49,10 @@ public class usuarioController {
     public void eliminarUsuario(@PathVariable Long codUsuario) {
         this.service.eliminarUsuario(codUsuario);
     }
-
+    @GetMapping("/login/{email}/{contrasena}")
+    public usuario login(@PathVariable String email,@PathVariable String contrasena){
+        return this.service.loginUsuario(email, contrasena);
+    }
     @PutMapping("/editar/{codUsuario}")
     public usuario editarUsuario(@PathVariable Long codUsuario, @RequestBody usuario usuario) {
        return this.service.editarUsuario(codUsuario, usuario);

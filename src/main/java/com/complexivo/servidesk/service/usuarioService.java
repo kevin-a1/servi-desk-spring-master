@@ -1,5 +1,6 @@
 package com.complexivo.servidesk.service;
 import java.util.List;
+import java.util.Optional;
 
 import com.complexivo.servidesk.models.usuario;
 import com.complexivo.servidesk.repository.usuarioRepository;
@@ -16,8 +17,8 @@ public class usuarioService{
         return rep.findAll();
     }
 
-    public usuario buscarUsuario(Long codUsuario) {
-        return rep.findByCodUsuario(codUsuario);
+    public Optional<usuario>  buscarUsuarioLista(Long codUsuario) {
+        return this.rep.findById(codUsuario);
     }
 
     public usuario buscarEmail(String email) {
@@ -46,5 +47,8 @@ public class usuarioService{
             return rep.save(personaUpdate);		
         }
        return usuario;
+    }
+    public usuario loginUsuario(String email,String contrasena){
+        return this.rep.findByEmailAndContrasena(email, contrasena);
     }
 }

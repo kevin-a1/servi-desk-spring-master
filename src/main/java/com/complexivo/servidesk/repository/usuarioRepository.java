@@ -12,4 +12,6 @@ public interface usuarioRepository extends JpaRepository <usuario, Long>{
 
     public usuario findByEmail(String email);
     
+    usuario findByEmailAndContrasena(String email,String contrasena);
+    
 }
