@@ -46,6 +46,9 @@ public class ticket {
     @Column(name = "fechaCreacion")
     @DateTimeFormat(pattern = "YYYY-MM-DDThh:mm:ssTZD")
     private Date fechaCreacion;
+    
+    @Column(name = "ticketEstado",nullable = true)
+    private boolean ticketEstado=true;
     private double sla;
     private String url;
     private String descripcionTicket;
@@ -63,11 +66,11 @@ public class ticket {
     private coordinador coordinador;
 
     @ManyToOne
-    @JoinColumn(name = "codViaComunicacion", updatable = false, nullable = false, referencedColumnName = "codViaComunicacion")
+    @JoinColumn(name = "codViaComunicacion", updatable = true, nullable = false, referencedColumnName = "codViaComunicacion")
     private viaComunicacion viaComunicacion;
 
     @ManyToOne
-    @JoinColumn(name = "codServicio", updatable = false, nullable = false, referencedColumnName = "codServicio")
+    @JoinColumn(name = "codServicio", updatable = true, nullable = false, referencedColumnName = "codServicio")
     private servicio servicio;
 
     @OneToOne
@@ -75,14 +78,22 @@ public class ticket {
     private tecnico tecnico;
 
     @OneToOne
-    @JoinColumn(name = "codEstado", updatable = false , referencedColumnName = "codEstado")
+    @JoinColumn(name = "codEstado", updatable = true , referencedColumnName = "codEstado")
     private estado estado;
     @OneToOne
-    @JoinColumn(name = "codSeveridad", updatable = false , referencedColumnName = "codSeveridad")
+    @JoinColumn(name = "codSeveridad", updatable = true , referencedColumnName = "codSeveridad")
     private severidad severidad;
     
+    @Column(name = "confirmacion", nullable = true)
+    private boolean  confirmacion = false;
     
-  
+    public boolean isTicketEstado() {
+        return ticketEstado;
+    }
+
+    public void setTicketEstado(boolean ticketEstado) {
+        this.ticketEstado = ticketEstado;
+    }
     public severidad getSeveridad() {
         return severidad;
     }
@@ -193,6 +204,16 @@ public class ticket {
     public void setSla(double sla) {
         this.sla = sla;
     }
+
+    public boolean getConfirmacion() {
+        return confirmacion;
+    }
+
+    public void setConfirmacion(boolean confirmacion) {
+        this.confirmacion = confirmacion;
+    }
+
+    
 
  
 }

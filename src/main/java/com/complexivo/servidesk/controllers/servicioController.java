@@ -33,6 +33,12 @@ public class servicioController {
         return this.servicioservice.buscarPorId(codServicio);
     }
 
+    @GetMapping("/filtrar-servicio/{codTipo}/{codCatalogo}")
+    @CrossOrigin
+    public List<servicio> findServicioByTipo(@PathVariable Long codTipo, @PathVariable Long codCatalogo){
+        return this.servicioservice.findServicioByTipoCatalogo(codTipo, codCatalogo);
+    }
+
     @PostMapping("/guardar-servicio")
     public servicio crearServicio(@RequestBody servicio servicio) {
         return this.servicioservice.crearServicio(servicio);
@@ -53,4 +59,13 @@ public class servicioController {
        this.servicioservice.editarIdPrioridad(cod_prioridad,cod_servicio);
     }
 
+    @GetMapping("listaservicios/{codCatalogo}/{page}/{size}")
+    public List<servicio> listaServiciosPorCatalogo(@PathVariable int codCatalogo,@PathVariable int page,@PathVariable int size){
+        return servicioservice.listarServiciosPorCatalogo(codCatalogo, page, size);
+    }
+
+    @GetMapping("listaserviciosporcategoria/{codCatalogo}")
+    public List<servicio> listaServiciosPorCategoria(@PathVariable int codCatalogo){
+        return servicioservice.listarServicioPorCategoria(codCatalogo);
+    }
 }

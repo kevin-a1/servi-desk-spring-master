@@ -61,4 +61,16 @@ public class catalogoService {
         return repo.findByCategoria(categoria);
 
     }
+
+    public catalogo actualizarCatalogo(Long codCatalogo,catalogo catalogo){
+        if(repo.findByCodCatalogo(codCatalogo)!=null){
+            catalogo.setCodCatalogo(codCatalogo);
+            return repo.save(catalogo);
+        }
+        return null;
+    }
+
+    public catalogo buscarPorCodigo(Long codCatalogo){
+        return repo.findByCodCatalogo(codCatalogo);
+    }
 }

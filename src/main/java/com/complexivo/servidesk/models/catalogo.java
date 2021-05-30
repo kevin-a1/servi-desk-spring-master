@@ -28,9 +28,6 @@ public class catalogo {
     @Column(length =300)
     private String descripcion;
     private boolean estado;
-    @OneToOne(mappedBy = "catalogo")
-    private servicio servicio;
-    
     //generar los getters y setters de la tabla que va unida
     
     public Long getCodCatalogo() {

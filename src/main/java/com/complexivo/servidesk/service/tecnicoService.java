@@ -31,6 +31,10 @@ public class tecnicoService {
         return repo.findAllByNivel(nivel,PageRequest.of(page, size));
     }
 
+    public List<tecnico> listarPorNiveles(int nivel){
+        return repo.findAllByNivel(nivel);
+    }
+
     public tecnico recuperarTecnico(Long codTecnico){
         return repo.findByCodTecnico(codTecnico);
     }
@@ -53,5 +57,7 @@ public class tecnicoService {
     public int obtenerTecnicoPorCedula(String cedula){
         return this.repo.buscarPorCedula(cedula);
     }
+   
 
+    
 }

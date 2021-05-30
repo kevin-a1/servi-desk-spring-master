@@ -2,6 +2,8 @@ package com.complexivo.servidesk.models;
 
 import java.sql.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 public class solucion {
 
      @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codSolucion;
     private Date fechafinalizacion;
      private String descripcion;

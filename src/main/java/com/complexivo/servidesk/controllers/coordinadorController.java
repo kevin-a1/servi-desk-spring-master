@@ -48,5 +48,8 @@ public class coordinadorController {
     public coordinador actualizarCoordinador(@RequestBody coordinador coordinador, @PathVariable Long codCoordinador) {
         return coordinadorservice.actualizarCoordinador(coordinador, codCoordinador);
     }
-    
+    @GetMapping("/login/{email}/{contrasena}")
+    public coordinador login(@PathVariable String email,@PathVariable String contrasena){
+        return this.coordinadorservice.loginCoordinador(email, contrasena);
+    }
 }

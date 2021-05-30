@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface preguntasRepository extends JpaRepository<preguntas, Long>{
     public Optional<preguntas>findByCodPregunta(Long id);
+
+    preguntas findByPregunta(String Pregunta);
 }

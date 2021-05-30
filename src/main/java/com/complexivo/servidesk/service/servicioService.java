@@ -9,6 +9,7 @@ import com.complexivo.servidesk.models.servicio;
 import com.complexivo.servidesk.repository.servicioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -57,6 +58,18 @@ public class servicioService {
             this.serviciorepository.updateServicePrioridad(cod_prioridad,cod_servicio);		
         }
   
+    }
+
+    public List<servicio> findServicioByTipoCatalogo(Long codTipo, Long codCatalogo){
+        return this.serviciorepository.findServicioByTipoCatalogo(codTipo, codCatalogo);
+    }
+
+    public List<servicio> listarServiciosPorCatalogo(int codCatalogo,int page,int size){
+        return serviciorepository.findservicosbyCatalogo(codCatalogo, PageRequest.of(page, size));
+    }
+
+    public List<servicio> listarServicioPorCategoria(int codCatalogo){
+        return serviciorepository.findservicosbyCategoria(codCatalogo);
     }
 }
 
