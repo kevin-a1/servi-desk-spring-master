@@ -1,6 +1,7 @@
 package com.complexivo.servidesk.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.complexivo.servidesk.models.usuario;
 import com.complexivo.servidesk.service.usuarioService;
@@ -30,8 +31,8 @@ public class usuarioController {
     }
     
     @GetMapping("/buscar/{codUsuario}")
-    public void buscarUsuario(@PathVariable Long codUsuario) {
-        this.service.buscarUsuario(codUsuario);
+    public Optional<usuario> buscarUsuarioLista(@PathVariable Long codUsuario) {
+        return this.service.buscarUsuarioLista(codUsuario);
     }
 
     @GetMapping("/buscarEmail/{email}")
