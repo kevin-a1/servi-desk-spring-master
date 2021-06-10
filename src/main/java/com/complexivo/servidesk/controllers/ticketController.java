@@ -36,6 +36,12 @@ public class ticketController {
 
     }
 
+    @GetMapping("/ticketCoordinador")
+    @CrossOrigin
+    public List<ticket> TicketsCoordinador() {
+        return this.service.TicketsCoordinador();
+    }
+
     @GetMapping("/listar/{codTicket}")
     @CrossOrigin
     public List<ticket> listarByIdTicket(@PathVariable Long codTicket) {
@@ -121,6 +127,12 @@ public class ticketController {
     @CrossOrigin
     public void confirmar(@PathVariable Long codticket){
         this.service.confirmar(codticket);
+    }
+
+    @PutMapping("/sla/{sla}/{codticket}")
+    @CrossOrigin
+    public void modificar_sla(@PathVariable Double sla,@PathVariable Long codticket) {
+        this.service.modificarSLA(sla, codticket);
     }
 
 }

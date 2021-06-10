@@ -22,10 +22,13 @@ import org.springframework.data.jpa.repository.Modifying;
  */
 @Repository
 public interface ticketRepository extends JpaRepository<ticket, Long>{
-    @Query(value = "SELECT * FROM ticket WHERE cod_tecnico=:codTecnico", nativeQuery = true)
+    @Query(value = "SELECT * FROM ticket WHERE cod_tecnico=:codTecnico order by fecha_asignacion desc", nativeQuery = true)
     List<ticket> ticketecnico(Long codTecnico);
-    @Query(value = "SELECT * FROM ticket WHERE cod_usuario=:codUsuario", nativeQuery = true)
+    @Query(value = "SELECT * FROM ticket WHERE cod_usuario=:codUsuario order by fecha_creacion desc", nativeQuery = true)
     List<ticket> ticketUsuario(Long codUsuario);
+    @Query(value = "SELECT * FROM ticket order by fecha_creacion desc", nativeQuery = true)
+    List<ticket> ticketCoordinador();
+
     public List<ticket> findByCodticket(Long id);
 
     @Modifying
@@ -67,4 +70,9 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
     @Transactional
     @Query(nativeQuery = true, value = "UPDATE ticket SET confirmacion = true WHERE codticket =?1")
     void confirmar(Long codticket);
+
+    @Modifying
+    @Transactional
+    @Query(nativeQuery = true,value = "UPDATE ticket set  sla=?1  where codticket =?2 ")
+    void modificarSLA(Double sla,Long codticket);
 }

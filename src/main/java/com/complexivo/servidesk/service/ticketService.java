@@ -99,4 +99,12 @@ public class ticketService {
     public void confirmar(Long codticket){
         this.repo.confirmar(codticket);
     }
+    public void modificarSLA( Double sla,Long codticket){
+        this.repo.modificarSLA(sla, codticket);
+     }
+
+    public List<ticket> TicketsCoordinador() {
+        return repo.ticketCoordinador();
+    }
+
 }

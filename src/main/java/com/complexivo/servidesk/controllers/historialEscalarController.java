@@ -31,21 +31,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class historialEscalarController {
     @Autowired
     historialEscalarService service;
-
+    
     @GetMapping("/listar")
     @CrossOrigin
     public List<HistorialEscalar> listar(){
         return this.service.listar();
     }
-
+    
     @PostMapping("/guardar")
     @CrossOrigin
     public HistorialEscalar guardar(@RequestBody HistorialEscalar data){
-        return this.service.crear(data);
+        return this.service.crear(data); 
     }
-
+    
     @GetMapping("/buscarByTicket/{codticket}")
-    @CrossOrigin
     public Optional<HistorialEscalar>listarByTicket(@PathVariable Long codticket){
         return this.service.BuscarByTicket(codticket);
     }

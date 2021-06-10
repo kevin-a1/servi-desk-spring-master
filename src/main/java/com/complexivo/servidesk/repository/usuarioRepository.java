@@ -1,5 +1,7 @@
 package com.complexivo.servidesk.repository;
 
+import java.util.List;
+
 import com.complexivo.servidesk.models.usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
