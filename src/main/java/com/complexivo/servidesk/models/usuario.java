@@ -24,7 +24,7 @@ public class usuario {
     private String contrasena;
 
     @OneToOne
-    @JoinColumn(name = "cedula", updatable = false, nullable = false, referencedColumnName = "cedula")
+    @JoinColumn(name = "cedula", updatable = false, nullable = false, unique = true, referencedColumnName = "cedula")
     private persona persona;
 
 
