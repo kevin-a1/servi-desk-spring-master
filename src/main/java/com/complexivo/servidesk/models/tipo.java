@@ -17,7 +17,7 @@ public class tipo {
     private Long codTipo;
     @Column(nullable = false,length = 50,unique = true)
     private String nombre;
-    @Column(length = 300)
+    @Column(nullable = false,length = 500)
     private String descripcion;
 
   
@@ -45,6 +45,4 @@ public class tipo {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
 }

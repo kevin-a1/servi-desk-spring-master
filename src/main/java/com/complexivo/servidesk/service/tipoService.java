@@ -31,7 +31,9 @@ public class tipoService {
     
 
     public void ELiminar(Long codTipo){
-        this.tipoRepository.deleteById(codTipo);
+        if(tipoRepository.findByCodTipo(codTipo)!= null){
+            tipoRepository.deleteById(codTipo);
+        }
     }
 
     public tipo editarTipo(Long codtipo, tipo tipo1) {
