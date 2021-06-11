@@ -42,6 +42,12 @@ public class ticketController {
         return this.service.TicketsCoordinador();
     }
 
+    @GetMapping("/ticketestado/{codEstado}")
+    @CrossOrigin
+    public List<ticket> TicketsbyEstado(@PathVariable int codEstado) {
+        return this.service.ticketsByEstado(codEstado);
+    }
+
     @GetMapping("/listar/{codTicket}")
     @CrossOrigin
     public List<ticket> listarByIdTicket(@PathVariable Long codTicket) {

@@ -107,4 +107,8 @@ public class ticketService {
         return repo.ticketCoordinador();
     }
 
+    public List<ticket> ticketsByEstado(int codEstado) {
+        return repo.ticketbyEstado(codEstado);
+    }
+
 }

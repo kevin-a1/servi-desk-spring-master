@@ -13,9 +13,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @EnableTransactionManagement
-public class ServideskApplication {
-    
-
+public class ServideskApplication {  
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ServideskApplication.class, args);
 	}

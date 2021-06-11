@@ -26,6 +26,8 @@ public interface ticketRepository extends JpaRepository<ticket, Long>{
     List<ticket> ticketecnico(Long codTecnico);
     @Query(value = "SELECT * FROM ticket WHERE cod_usuario=:codUsuario order by fecha_creacion desc", nativeQuery = true)
     List<ticket> ticketUsuario(Long codUsuario);
+    @Query(value = "SELECT * FROM ticket  WHERE cod_estado =:codEstado order by fecha_creacion desc", nativeQuery = true)
+    List<ticket> ticketbyEstado(int codEstado);
     @Query(value = "SELECT * FROM ticket order by fecha_creacion desc", nativeQuery = true)
     List<ticket> ticketCoordinador();
 
